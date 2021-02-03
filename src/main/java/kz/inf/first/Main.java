@@ -16,17 +16,12 @@ public class Main {
 
         ATM atm = context.getBean("atm", ATM.class);
 
-        atm.listOfUsers();
-
         System.out.println("Please enter card number (account number):");
         String accNum = in.next();
         System.out.println("Please enter pin-code:");
         String accPinC = in.next();
 
         Account acc = checkAccount(atm,accNum,accPinC);
-
-
-
 
         while(p != 0){
 
@@ -35,6 +30,7 @@ public class Main {
             System.out.println("3.Balance money");
             System.out.println("4.Change pin-code");
             System.out.println("5.Full-info about account FULL-ACCESS");
+            System.out.println("6.All users");
 
             p = in.nextInt();
             switch (p){
@@ -60,6 +56,10 @@ public class Main {
 
                 case 5:
                     acc.fullInfo();
+                    break;
+
+                case 6:
+                    atm.listOfUsers();
                     break;
                 case 0:
                     System.out.println("Exit");
