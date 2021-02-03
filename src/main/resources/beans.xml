@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user1" class="kz.inf.first.Account">
+        <property name="username" value="Nasiba"/>
+        <property name="accountNumber" value="11111"/>
+        <property name="money" value="50000"/>
+        <property name="password" value="qwerty"/>
+        <property name="pincode" value="1111"/>
+    </bean>
+
+    <bean id="user2" class="kz.inf.first.Account">
+        <property name="username" value="Vigil"/>
+        <property name="accountNumber" value="22222"/>
+        <property name="money" value="4000"/>
+        <property name="password" value="qwerty"/>
+        <property name="pincode" value="2222"/>
+    </bean>
+
+    <bean id="user3" class="kz.inf.first.Account">
+        <property name="username" value="Vernyi"/>
+        <property name="accountNumber" value="33333"/>
+        <property name="money" value="10000"/>
+        <property name="password" value="qwerty"/>
+        <property name="pincode" value="3333"/>
+    </bean>
+
+    <bean id="atm" class="kz.inf.first.ATM">
+        <property name="whichBank" value="Halyk"/>
+        <property name="address" value="Almaty. Abai 146"/>
+        <property name="usersList">
+            <list>
+                <ref bean="user1"/>
+                <ref bean="user2"/>
+                <ref bean="user3"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
