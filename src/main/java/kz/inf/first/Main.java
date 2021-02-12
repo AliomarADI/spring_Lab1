@@ -62,10 +62,12 @@ public class Main {
                     atm.listOfUsers();
                     break;
                 case 0:
+                    context.close();
                     System.out.println("Exit");
                     return;
             }
         }
+
 
     }
 

@@ -43,7 +43,10 @@
         <property name="pincode" value="3333"/>
     </bean>
 
-    <bean id="atm" class="kz.inf.first.ATM" destroy-method="doDestroy" init-method="doInit">
+    <bean id="atm" class="kz.inf.first.ATM">
+<!--          destroy-method="doDestroy"-->
+<!--          init-method="doInit"-->
+
         <property name="whichBank" value="Halyk"/>
         <property name="address" value="Almaty. Abai 146"/>
         <property name="usersList">
@@ -55,6 +58,16 @@
                 <ref bean="user5"/>
             </list>
         </property>
+    </bean>
+
+    <bean id="userService"
+          class="kz.inf.first.DBConnection"
+          scope="singleton"
+          destroy-method="destroy"
+          init-method="init">
+        <property name="dbUrl" value="jdbc:mysql://localhost:####"/>
+        <property name="dbUsername" value="root"/>
+        <property name="dbPassword" value="root"/>
     </bean>
 
 </beans>

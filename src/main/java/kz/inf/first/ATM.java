@@ -8,6 +8,7 @@ public class ATM {
     List<Account> usersList;
 
     private ATM(){}
+
     public ATM(String address, String whichBank) {
         this.address = address;
         this.whichBank = whichBank;
