@@ -43,7 +43,7 @@
         <property name="pincode" value="3333"/>
     </bean>
 
-    <bean id="atm" class="kz.inf.first.ATM">
+    <bean id="atm" class="kz.inf.first.ATM" destroy-method="doDestroy" init-method="doInit">
         <property name="whichBank" value="Halyk"/>
         <property name="address" value="Almaty. Abai 146"/>
         <property name="usersList">

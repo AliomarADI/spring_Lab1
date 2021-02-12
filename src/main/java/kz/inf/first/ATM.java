@@ -7,10 +7,22 @@ public class ATM {
     String whichBank;
     List<Account> usersList;
 
-    public ATM(){}
+    private ATM(){}
     public ATM(String address, String whichBank) {
         this.address = address;
         this.whichBank = whichBank;
+    }
+
+    public ATM getNewATM(){
+        return new ATM();
+    }
+
+    public void doInit(){
+        System.out.println("Method do Init activated");
+    }
+
+    public void doDestroy(){
+        System.out.println("Method do Destroy activated! Bye)");
     }
 
     public List<Account> getUsersList() {
