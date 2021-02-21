@@ -1,23 +1,27 @@
 package kz.inf.first;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class Account implements Actions{
-    String username;
-    String accountNumber;
-    Double money;
-    String pincode;
-    String password;
+    private String username;
+    private String accountNumber;
+    private Double money;
+    private String pincode;
+    private String bank;
 
-    public Account(String username, String accountNumber,Double money,String password, String pincode) {
-        this.username = username;
+
+
+    public Account(String accountNumber, Double money, String pincode,String bank) {
         this.accountNumber = accountNumber;
         this.money = money;
         this.pincode = pincode;
-        this.password = password;
+        this.bank = bank;
     }
-
-    public Account(){ }//empty
 
     Scanner in = new Scanner(System.in);
 
@@ -44,13 +48,6 @@ public class Account implements Actions{
 
     @Override
     public void changePinCode() {
-        System.out.println("Изменить пин-код:");
-        System.out.println("Выберите способ:");
-        System.out.println("1.Изменить через старый пин-код\n2.Изменить через пароль аккаунта");
-        int pick = in.nextInt();
-
-        switch (pick) {
-            case 1:
 
                 System.out.println("Please enter old pincode:");
                 String oldpin = in.next();
@@ -62,23 +59,6 @@ public class Account implements Actions{
                     System.out.println("Error: Неправильный пинкод");
                 }
 
-                 break;
-
-             case 2:
-
-                 System.out.println("Please enter password:");
-                 String password = in.next();
-                 if (password.equals(this.getPassword())) {
-                     System.out.println("Please enter new pincode:");
-                     this.setPincode(in.next());
-                     System.out.println("Pin-code changed");
-                 }else{
-                     System.out.println("Error: Неправильный пароль");
-                 }
-
-
-                 break;
-         }
     }
 
     public void fullInfo(){
@@ -87,7 +67,6 @@ public class Account implements Actions{
         System.out.println("Account number: " + this.getAccountNumber());
         System.out.println("Money: " + this.getMoney());
         System.out.println("Pin-Code: " + this.getPincode());
-        System.out.println("Password: " + this.getPassword());
         System.out.println("==================================================");
     }
 
@@ -99,12 +78,12 @@ public class Account implements Actions{
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getBank() {
+        return bank;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setBank(String bank) {
+        this.bank = bank;
     }
 
     public String getAccountNumber() {

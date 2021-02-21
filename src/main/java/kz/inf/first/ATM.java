@@ -1,37 +1,44 @@
 package kz.inf.first;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 
+@Component
 public class ATM {
-    String address;
-    String whichBank;
-    List<Account> usersList;
+    @Value("${atm.address}")
+    private String address;
+    @Value("${atm.bank}")
+    private String whichBank;
 
-    private ATM(){}
 
-    public ATM(String address, String whichBank) {
-        this.address = address;
-        this.whichBank = whichBank;
+    private List<Account> accounts;
+
+    public ATM() {
+
     }
 
-    public ATM getNewATM(){
-        return new ATM();
-    }
-
+    @PostConstruct
     public void doInit(){
         System.out.println("Method do Init activated");
     }
 
+    @PreDestroy
     public void doDestroy(){
         System.out.println("Method do Destroy activated! Bye)");
     }
 
-    public List<Account> getUsersList() {
-        return usersList;
+    public List<Account> getAccounts() {
+        return accounts;
     }
 
-    public void setUsersList(List<Account> usersList) {
-        this.usersList = usersList;
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 
     public String getAddress() {
@@ -50,9 +57,4 @@ public class ATM {
         this.whichBank = whichBank;
     }
 
-    public void listOfUsers(){
-        for (Account acc: this.getUsersList()){
-            System.out.println(acc.getUsername());
-        }
-    }
 }
